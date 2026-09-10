@@ -1,0 +1,46 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f4f1ea;
+  --foreground: #1a2c32;
+  --muted: #5a6b70;
+  --card: #fffcf7;
+  --line: #e2dbd0;
+  --forest: #1b4450;
+  --sage: #2d6570;
+  --leaf: #6e969c;
+  --whatsapp: #128c4a;
+  --clay: #b85a3a;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-forest: var(--forest);
+  --color-sage: var(--sage);
+  --color-leaf: var(--leaf);
+  --color-whatsapp: var(--whatsapp);
+  --color-clay: var(--clay);
+  --font-sans: var(--font-outfit);
+  --font-serif: var(--font-serif-src);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-outfit), system-ui, sans-serif;
+}
+
+.reel-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: var(--leaf) transparent;
+}
+
