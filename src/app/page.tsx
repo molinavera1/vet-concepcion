@@ -7,6 +7,7 @@ import { Reveal } from "@/components/reveal";
 import { Marquee } from "@/components/marquee";
 import {
   catVaccines,
+  consultaIncludes,
   coverage,
   coverageMap,
   dogVaccines,
@@ -33,11 +34,10 @@ export default async function Home() {
               Veterinaria a domicilio · Gran {site.city}
             </p>
             <h1 className="animate-fade-up-delay mt-5 font-serif text-5xl leading-[1.05] text-card sm:text-6xl lg:text-7xl">
-              Atención clínica en la casa de tu mascota
+              Atención veterinaria en la comodidad de tu casa
             </h1>
             <p className="animate-fade-up-2 mt-5 max-w-lg text-base leading-relaxed text-card/80 sm:text-lg">
-              Consulta, vacunas, muestras y microchip, sin el estrés del
-              traslado.
+              Brindamos lo que tu mascota necesita, sin el estrés del traslado.
             </p>
           </div>
           <div className="mt-8 max-w-xl animate-fade-up-3">
@@ -69,7 +69,7 @@ export default async function Home() {
             <div className="overflow-hidden rounded-3xl shadow-[0_24px_50px_-24px_rgba(19,72,71,0.55)] ring-4 ring-background">
               <Image
                 src="/matilde.jpg"
-                alt="Matilde Camposano Schuck, médica veterinaria"
+                alt="Matilde Camposano Schuck, médico veterinario"
                 width={400}
                 height={400}
                 className="aspect-square w-full object-cover object-[50%_18%]"
@@ -79,8 +79,10 @@ export default async function Home() {
           <div className="text-center sm:text-left">
             <p className="font-serif text-3xl text-forest">{site.veterinarian}</p>
             <p className="mt-2 max-w-md text-sm leading-relaxed text-muted">
-              {site.degree} de la {site.university}. Consultas, vacunas,
-              muestras, desparasitación y microchip.
+              {site.degree} de la {site.university}.
+            </p>
+            <p className="mt-1 max-w-md text-sm leading-relaxed text-muted">
+              {site.diploma}.
             </p>
             <div className="mt-5 flex items-center justify-center gap-4 sm:justify-start">
               <a
@@ -169,43 +171,43 @@ export default async function Home() {
             <h2 className="mt-2 font-serif text-4xl text-forest sm:text-5xl">
               Prestaciones
             </h2>
-            <p className="mt-3 text-muted">
-              La visita parte con la consulta general. Después puedes agregar
-              vacunas, desparasitación, muestras o microchip, si corresponde.
-              Cirugía, internación o radiografías no se hacen en casa.
-            </p>
           </div>
           <div className="mt-10">
             {services
               .filter((service) => service.id === "consulta")
               .map((service) => (
                 <Reveal key={service.id}>
-                  <article className="rounded-3xl bg-forest p-7 text-card shadow-[0_24px_50px_-24px_rgba(19,72,71,0.65)] md:flex md:items-start md:justify-between md:gap-8">
+                  <article className="rounded-3xl bg-forest p-7 text-card shadow-[0_24px_50px_-24px_rgba(19,72,71,0.65)]">
                     <div className="flex gap-4">
-                      <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[1.7rem_1.2rem_1.8rem_1.3rem] bg-card/15 text-card">
-                        <Icon name={service.icon} className="h-9 w-9" />
+                      <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-[1.7rem_1.2rem_1.8rem_1.3rem] bg-card/15 text-card">
+                        <Icon name={service.icon} className="h-11 w-11" />
                       </div>
-                      <div>
-                        <h3 className="font-serif text-2xl">
-                          {service.title}
-                        </h3>
-                        <p className="mt-2 max-w-xl text-sm leading-relaxed text-card/75">
-                          {service.description}
-                        </p>
-                      </div>
+                      <h3 className="font-serif text-2xl">
+                        {service.title}
+                      </h3>
                     </div>
-                    <p className="mt-4 shrink-0 font-serif text-3xl text-card md:mt-0">
-                      {service.price}
+                    <p className="mt-5 text-xs font-medium uppercase tracking-[0.14em] text-card/55">
+                      Incluye
                     </p>
+                    <ul className="mt-3 grid gap-x-10 gap-y-2.5 sm:grid-cols-2">
+                      {consultaIncludes.map((item) => (
+                        <li
+                          key={item}
+                          className="flex gap-2.5 text-sm leading-snug text-card/85"
+                        >
+                          <span
+                            className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-card/70"
+                            aria-hidden
+                          />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </article>
                 </Reveal>
               ))}
             <p className="mt-12 font-serif text-2xl text-forest">
-              Servicios que puedes agregar a tu consulta general
-            </p>
-            <p className="mt-2 max-w-2xl text-sm text-muted">
-              No reemplazan la consulta: se suman a los $28.000. El
-              desplazamiento ya está incluido.
+              Servicios adicionales
             </p>
             <div className="mt-6 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
               {services
@@ -230,9 +232,11 @@ export default async function Home() {
                         <h3 className="font-serif text-xl text-forest">
                           {service.title}
                         </h3>
-                        <p className="shrink-0 text-sm font-medium text-sage">
-                          {service.price}
-                        </p>
+                        {service.price ? (
+                          <p className="shrink-0 text-sm font-medium text-sage">
+                            {service.price}
+                          </p>
+                        ) : null}
                       </div>
                       <p className="mt-2 text-sm leading-relaxed text-muted">
                         {service.description}
@@ -250,17 +254,9 @@ export default async function Home() {
         className="scroll-mt-24 bg-card px-5 py-16 sm:px-8"
       >
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-            <h2 className="font-serif text-4xl text-forest sm:text-5xl">
-              Aranceles de referencia
-            </h2>
-            <p className="max-w-md text-sm text-muted">{site.pricingNote}</p>
-          </div>
-          <p className="mt-6 max-w-2xl text-sm text-muted">
-            Primero la consulta general. Lo de abajo no es en vez de esa
-            consulta: se suma si lo necesitas. El desplazamiento ya está
-            incluido. Con tres o más mascotas se conversa el valor.
-          </p>
+          <h2 className="font-serif text-4xl text-forest sm:text-5xl">
+            Aranceles de referencia
+          </h2>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
             {consultPricing.map((row, i) => (
               <Reveal key={row.name} delay={i * 100} variant={i ? "right" : "left"}>
@@ -332,18 +328,9 @@ export default async function Home() {
 
       <section id="vacunas" className="scroll-mt-24 px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
-          <p className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-clay">
-            <Paw className="h-4 w-4" />
-            Según especie
-          </p>
-          <h2 className="mt-2 font-serif text-4xl text-forest sm:text-5xl">
+          <h2 className="font-serif text-4xl text-forest sm:text-5xl">
             Vacunas
           </h2>
-          <p className="mt-3 max-w-2xl text-muted">
-            El esquema se define según edad, historial y si convive o sale.
-            Los valores son el recargo sobre la consulta ($28.000). El
-            desplazamiento está incluido.
-          </p>
           <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
             <Reveal variant="left">
             <article className="group overflow-hidden rounded-3xl border border-line bg-card shadow-[0_22px_44px_-28px_rgba(19,72,71,0.5)]">
@@ -361,12 +348,9 @@ export default async function Home() {
                 </h3>
                 <ul className="mt-4 divide-y divide-line">
                   {dogVaccines.map((v) => (
-                    <li key={v.name} className="flex items-start justify-between gap-4 py-4 first:pt-0">
-                      <div>
-                        <p className="font-medium text-forest">{v.name}</p>
-                        <p className="mt-1 text-sm text-muted">{v.detail}</p>
-                      </div>
-                      <p className="shrink-0 text-sm font-medium text-sage">{v.price}</p>
+                    <li key={v.name} className="py-4 first:pt-0">
+                      <p className="font-medium text-forest">{v.name}</p>
+                      <p className="mt-1 text-sm text-muted">{v.detail}</p>
                     </li>
                   ))}
                 </ul>
@@ -389,12 +373,9 @@ export default async function Home() {
                 </h3>
                 <ul className="mt-4 divide-y divide-line">
                   {catVaccines.map((v) => (
-                    <li key={v.name} className="flex items-start justify-between gap-4 py-4 first:pt-0">
-                      <div>
-                        <p className="font-medium text-forest">{v.name}</p>
-                        <p className="mt-1 text-sm text-muted">{v.detail}</p>
-                      </div>
-                      <p className="shrink-0 text-sm font-medium text-sage">{v.price}</p>
+                    <li key={v.name} className="py-4 first:pt-0">
+                      <p className="font-medium text-forest">{v.name}</p>
+                      <p className="mt-1 text-sm text-muted">{v.detail}</p>
                     </li>
                   ))}
                 </ul>
@@ -492,16 +473,6 @@ export default async function Home() {
           <div className="mt-8">
             <Marquee items={coverage} />
           </div>
-          <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3">
-            {coverage.map((comuna) => (
-              <li
-                key={comuna}
-                className="rounded-2xl border border-line bg-card px-4 py-3 text-sm text-forest shadow-sm"
-              >
-                {comuna}
-              </li>
-            ))}
-          </ul>
           <div className="relative z-0 mt-8 overflow-hidden rounded-3xl border border-line bg-card shadow-[0_16px_36px_-24px_rgba(19,72,71,0.4)]">
             <iframe
               title={coverageMap.title}

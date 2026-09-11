@@ -1,8 +1,10 @@
 export const site = {
   name: "Matilde Vet",
   veterinarian: "Matilde Camposano Schuck",
-  degree: "Médica veterinaria",
+  degree: "Médico veterinario",
   university: "Universidad Austral de Chile",
+  diploma:
+    "Diplomado en Medicina Interna, UST (agosto 2026 – enero 2027)",
   city: "Concepción",
   tagline:
     "Atención veterinaria a domicilio en el Gran Concepción. Consulta, vacunas, toma de muestras, desparasitación y microchip.",
@@ -83,31 +85,30 @@ export const services = [
   {
     id: "consulta",
     title: "Consulta general",
-    price: "$28.000",
+    price: "",
     icon: "stethoscope",
-    description:
-      "Es la base de la visita: historia, examen y plan. Un segundo paciente en la misma visita: $14.000.",
+    description: "",
   },
   {
     id: "vacunas",
     title: "Vacunas",
-    price: "desde +$4.000",
+    price: "",
     icon: "syringe",
     description:
-      "Séxtuple y antirrábica en perros. Triple y antirrábica en gatos. KC o Intra-Trac, +$10.000.",
+      "Perros: séxtuple, KC o Intra-Trac y antirrábica. Gatos: triple felina, antirrábica y leucemia felina.",
   },
   {
     id: "desparasitacion",
     title: "Desparasitación",
-    price: "desde +$2.500",
+    price: "",
     icon: "shield",
     description:
-      "Interna y/o externa, con dosis según peso. El valor varía según el producto.",
+      "Interna y/o externa. El valor varía según el producto y el peso del paciente.",
   },
   {
     id: "muestras",
     title: "Toma de muestras",
-    price: "+$5.000",
+    price: "",
     icon: "flask",
     description:
       "Sangre, orina u otras muestras en casa. No incluye el precio de los exámenes de laboratorio.",
@@ -115,48 +116,56 @@ export const services = [
   {
     id: "microchip",
     title: "Microchip",
-    price: "+$8.000",
+    price: "",
     icon: "chip",
     description:
-      "Identificación permanente, implantada en domicilio. Se suma a la consulta.",
+      "Identificación permanente bajo la piel. Permite reconocer a la mascota si se pierde y es un requisito en varios trámites.",
   },
+] as const;
+
+export const consultaIncludes = [
+  "Traslado",
+  "Evaluación del estado general del paciente",
+  "Examen físico completo",
+  "Orientación nutricional",
+  "Recomendaciones generales",
+  "Solicitud de exámenes complementarios, de ser necesario",
+  "Seguimiento y derivación a un especialista, si corresponde",
+  "Corte de uñas, de ser necesario",
 ] as const;
 
 export const dogVaccines = [
   {
     name: "Séxtuple",
-    price: "+$7.000",
     detail:
-      "Enfermedades más frecuentes del perro (moquillo, parvovirus y otras, según laboratorio). Con consulta: $35.000.",
+      "Cubre enfermedades frecuentes del perro, como moquillo y parvovirus (el laboratorio indica el detalle).",
   },
   {
     name: "KC / Intra-Trac",
-    price: "+$10.000",
     detail:
-      "Tos de las perreras. Si hay contacto con otros perros, pensión o peluquería. Con consulta: $38.000.",
+      "Tos de las perreras. Se recomienda si hay contacto con otros perros, pensión o peluquería.",
   },
   {
     name: "Antirrábica",
-    price: "+$4.000",
-    detail: "Rabia. Con consulta: $32.000. Útil para viajes, trámites y el calendario anual.",
+    detail: "Vacuna contra la rabia. Sirve para el calendario anual, viajes y trámites.",
   },
 ] as const;
 
 export const catVaccines = [
   {
     name: "Triple felina",
-    price: "+$7.000",
-    detail: "Panleucopenia, calicivirus y rinotraqueítis. Con consulta: $35.000.",
+    detail:
+      "Protege contra panleucopenia, calicivirus y rinotraqueítis, las enfermedades respiratorias y sistémicas más frecuentes en gatos.",
   },
   {
     name: "Antirrábica",
-    price: "+$4.000",
-    detail: "También en gatos de departamento. Con consulta: $32.000.",
+    detail:
+      "Vacuna contra la rabia. También se indica en gatos que viven en departamento.",
   },
   {
     name: "Leucemia felina",
-    price: "Al agendar",
-    detail: "FeLV. Si hay acceso al exterior o contacto con otros gatos.",
+    detail:
+      "FeLV. Se recomienda si hay acceso al exterior o contacto con otros gatos.",
   },
 ] as const;
 
@@ -200,7 +209,7 @@ export const steps = [
 export const faqs = [
   {
     q: "¿Quién atiende?",
-    a: "Matilde Camposano Schuck, médica veterinaria de la Universidad Austral de Chile. Atiende a domicilio en el Gran Concepción.",
+    a: "Matilde Camposano Schuck, médico veterinario de la Universidad Austral de Chile. Diplomado en Medicina Interna, UST (agosto 2026 – enero 2027). Atiende a domicilio en el Gran Concepción.",
   },
   {
     q: "¿Qué vacunas aplicas?",

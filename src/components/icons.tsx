@@ -54,11 +54,9 @@ const doodles: Record<
 > = {
   stethoscope: (
     <>
-      <path d="M5 3.5v6.2a3.2 3.2 0 1 0 6.4 0V3.5" />
-      <path d="M5 3.5H3.6M8.2 3.5h1.5" />
-      <path d="M15.2 3.5v5.4A6.6 6.6 0 0 1 8.2 16H7" />
-      <circle cx="18.2" cy="16.4" r="3.1" />
-      <path d="M15.1 16.4H12" />
+      <path d="M4.8 2.3A.3.3 0 1 0 5 2H4a2 2 0 0 0-2 2v5a6 6 0 0 0 6 6 6 6 0 0 0 6-6V4a2 2 0 0 0-2-2h-1a.2.2 0 0 0-.2.3" />
+      <path d="M8 15a6 6 0 0 0 6 6 6 6 0 0 0 6-6v-3" />
+      <circle cx="20" cy="10" r="2" />
     </>
   ),
   syringe: (
@@ -112,6 +110,27 @@ const doodles: Record<
   ),
 };
 
+export function StethoscopeGlyph({ className }: { className?: string }) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.15"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className ?? "h-8 w-8"}
+      aria-hidden
+    >
+      <circle cx="6.2" cy="3.4" r="1.35" fill="currentColor" stroke="none" />
+      <circle cx="12.2" cy="3.4" r="1.35" fill="currentColor" stroke="none" />
+      <path d="M6.2 3.4v8.1a3 3 0 0 1 6 0V3.4" />
+      <path d="M9.2 14.5c0 3.7 2.6 6.6 6.3 6.6A6.3 6.3 0 0 0 21.8 14.8v-2.2" />
+      <circle cx="19.6" cy="10.4" r="2.35" />
+    </svg>
+  );
+}
+
 export function WhatsappGlyph({ className }: { className?: string }) {
   return (
     <svg
@@ -133,6 +152,10 @@ export function Icon({
   className?: string;
 }) {
   const size = className ?? "h-8 w-8";
+
+  if (name === "stethoscope") {
+    return <StethoscopeGlyph className={`${size} block`} />;
+  }
 
   if (name === "whatsapp") {
     return <WhatsappGlyph className={`${size} block`} />;

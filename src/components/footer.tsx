@@ -18,6 +18,8 @@ export function Footer() {
             <br />
             {site.university}
             <br />
+            {site.diploma}
+            <br />
             Atención a domicilio en el Gran {site.city}
           </p>
         </div>
