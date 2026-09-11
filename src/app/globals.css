@@ -1,14 +1,14 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f4f1ea;
-  --foreground: #1a2c32;
-  --muted: #5a6b70;
-  --card: #fffcf7;
-  --line: #e2dbd0;
-  --forest: #1b4450;
-  --sage: #2d6570;
-  --leaf: #6e969c;
+  --background: #f7f3ec;
+  --foreground: #122e2c;
+  --muted: #5c6a62;
+  --card: #ffffff;
+  --line: #e4d9c8;
+  --forest: #134847;
+  --sage: #1d5c59;
+  --leaf: #4f7d78;
   --whatsapp: #128c4a;
   --clay: #b85a3a;
 }
@@ -37,6 +37,28 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-outfit), system-ui, sans-serif;
+  background-image:
+    radial-gradient(ellipse 70% 50% at 0% 0%, rgb(79 125 120 / 0.07), transparent 55%),
+    radial-gradient(ellipse 55% 40% at 100% 12%, rgb(184 90 58 / 0.05), transparent 50%);
+}
+
+.grain {
+  position: relative;
+}
+
+.grain::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  opacity: 0.28;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E");
+}
+
+.grain > * {
+  position: relative;
+  z-index: 1;
 }
 
 .reel-scroll {
@@ -44,3 +66,101 @@ body {
   scrollbar-color: var(--leaf) transparent;
 }
 
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes kenburns {
+  from {
+    transform: scale(1.08) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.22) translate3d(-3.5%, -2%, 0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: scale(1.55);
+    opacity: 0;
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.animate-fade-up-delay {
+  animation: fade-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+}
+
+.animate-fade-up-2 {
+  animation: fade-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.22s both;
+}
+
+.animate-fade-up-3 {
+  animation: fade-up 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.34s both;
+}
+
+.animate-float-soft {
+  animation: float-soft 5.5s ease-in-out infinite;
+}
+
+.animate-kenburns {
+  animation: kenburns 22s ease-in-out infinite alternate;
+}
+
+.animate-marquee {
+  animation: marquee 26s linear infinite;
+}
+
+.animate-pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .animate-fade-up,
+  .animate-fade-up-delay,
+  .animate-fade-up-2,
+  .animate-fade-up-3,
+  .animate-float-soft,
+  .animate-kenburns,
+  .animate-marquee,
+  .animate-pulse-ring {
+    animation: none;
+  }
+}

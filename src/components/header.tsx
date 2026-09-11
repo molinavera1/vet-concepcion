@@ -19,8 +19,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-card/95 backdrop-blur-md">
       <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 sm:px-8">
-        <a href="#inicio" className="flex items-center gap-2.5 leading-tight">
-          <Logo className="h-9 w-9 shrink-0" />
+        <a href="#inicio" className="group flex items-center gap-2.5 leading-tight">
+          <Logo className="h-10 w-10 shrink-0 transition-transform duration-300 group-hover:scale-105" />
           <span>
             <span className="block font-serif text-lg font-semibold text-forest sm:text-xl">
               {site.name}
@@ -36,7 +36,7 @@ export function Header() {
             <a
               key={link.href}
               href={link.href}
-              className="transition-colors hover:text-sage"
+              className="transition-colors duration-200 hover:text-sage"
             >
               {link.label}
             </a>
@@ -47,7 +47,7 @@ export function Header() {
           href={whatsappUrl()}
           target="_blank"
           rel="noopener noreferrer"
-          className="hidden rounded-md bg-forest px-4 py-2 text-sm font-medium text-card hover:bg-sage sm:inline-flex"
+          className="hidden rounded-full bg-forest px-4 py-2 text-sm font-medium text-card transition hover:bg-sage sm:inline-flex"
         >
           Agendar visita
         </a>
@@ -83,7 +83,7 @@ export function Header() {
               href={whatsappUrl()}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 inline-flex justify-center rounded-md bg-forest px-4 py-2.5 text-sm font-medium text-card"
+              className="mt-2 inline-flex justify-center rounded-full bg-forest px-4 py-2.5 text-sm font-medium text-card"
             >
               Agendar visita
             </a>

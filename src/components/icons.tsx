@@ -1,29 +1,115 @@
-type IconName =
+import type { ReactNode } from "react";
+
+type DoodleName =
   | "stethoscope"
   | "syringe"
   | "shield"
   | "flask"
   | "chip"
   | "school"
+  | "home"
+  | "plus"
   | "instagram"
   | "whatsapp"
   | "linkedin";
 
-const paths: Record<
-  Exclude<IconName, "instagram" | "whatsapp" | "linkedin">,
-  string
+export function Paw({ className }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 32 32" className={className} fill="currentColor" aria-hidden>
+      <ellipse cx="8" cy="10" rx="3.1" ry="4" transform="rotate(-22 8 10)" />
+      <ellipse cx="14.5" cy="6.8" rx="3.1" ry="4" />
+      <ellipse cx="21.5" cy="8.2" rx="3" ry="3.9" transform="rotate(18 21.5 8.2)" />
+      <ellipse cx="26.2" cy="13.4" rx="2.6" ry="3.4" transform="rotate(36 26.2 13.4)" />
+      <ellipse cx="16.4" cy="21.4" rx="7.2" ry="6.4" />
+    </svg>
+  );
+}
+
+function DoodleSvg({
+  className,
+  children,
+}: {
+  className?: string;
+  children: ReactNode;
+}) {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.8"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className ?? "h-8 w-8"}
+      aria-hidden
+    >
+      {children}
+    </svg>
+  );
+}
+
+const doodles: Record<
+  Exclude<DoodleName, "instagram" | "whatsapp" | "linkedin">,
+  ReactNode
 > = {
-  stethoscope:
-    "M8.5 4v6.5a3.5 3.5 0 1 0 7 0V4M8.5 4H7m1.5 0H10m5.5 0H17m-1.5 0H14M4 14a3 3 0 0 0 3 3h.5a4.5 4.5 0 0 0 8.9-1",
-  syringe:
-    "M14.5 3.5 17 6m-8 8-4 4m1.5-12.5 8 8M9 7.5l1.5-1.5 6 6-1.5 1.5-6-6Z",
-  shield:
-    "M12 3 5 6.5v5.2c0 4 3.1 6.8 7 8.3 3.9-1.5 7-4.3 7-8.3V6.5L12 3Zm0 5.5v8",
-  flask:
-    "M9 3h6M10 3v5.2L6.2 16a3 3 0 0 0 2.6 4.5h6.4A3 3 0 0 0 17.8 16L13 8.2V3",
-  chip: "M12 8.5a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0-4v2m0 11v2m8.5-6.5h-2m-11 0h-2m13.2-4.7-1.4 1.4M7.7 16.8 6.3 18.2m11 0-1.4-1.4M7.7 7.2 6.3 5.8",
-  school:
-    "M3 10.5 12 5l9 5.5M5 11.5V18h14v-6.5M12 19v-5",
+  stethoscope: (
+    <>
+      <path d="M5 3.5v6.2a3.2 3.2 0 1 0 6.4 0V3.5" />
+      <path d="M5 3.5H3.6M8.2 3.5h1.5" />
+      <path d="M15.2 3.5v5.4A6.6 6.6 0 0 1 8.2 16H7" />
+      <circle cx="18.2" cy="16.4" r="3.1" />
+      <path d="M15.1 16.4H12" />
+    </>
+  ),
+  syringe: (
+    <>
+      <path d="m18 3 3 3" />
+      <path d="m16.5 6.5 3.2-3.2" />
+      <path d="M19 8.5 9 18.5 5.5 15 15.5 5" />
+      <path d="M8.2 13.2h4.2" />
+      <path d="m5.2 18.8-2.4 2.4" />
+    </>
+  ),
+  shield: (
+    <>
+      <path d="M12 3.2 5 6.2v6.4c0 4.2 3.1 7.2 7 8.8 3.9-1.6 7-4.6 7-8.8V6.2L12 3.2Z" />
+      <path d="m8.8 13 2.4 2.4 4.2-4.4" />
+    </>
+  ),
+  flask: (
+    <>
+      <path d="M9.2 3.2h5.6" />
+      <path d="M10.4 3.2v5L5.8 16.4A3.1 3.1 0 0 0 8.5 21h7a3.1 3.1 0 0 0 2.7-4.6L13.6 8.2v-5" />
+      <path d="M7.2 16.2h9.6" />
+    </>
+  ),
+  chip: (
+    <>
+      <rect x="7.2" y="8.2" width="9.6" height="7.6" rx="1.8" />
+      <path d="M12 5.4v2.2M12 16.4v2.2M4.8 12h2.2M17 12h2.2" />
+      <circle cx="12" cy="12" r="1.5" />
+    </>
+  ),
+  school: (
+    <>
+      <path d="M3.2 11 12 5.6 20.8 11 12 16.4 3.2 11Z" />
+      <path d="M7.2 13.2v4.6c2.2 1.5 7.4 1.5 9.6 0v-4.6" />
+      <path d="M20.6 11.4v6.2" />
+    </>
+  ),
+  home: (
+    <>
+      <path d="M4 11.6 12 4.4l8 7.2" />
+      <path d="M6.4 10.8V20h11.2v-9.2" />
+      <path d="M10 20v-5.2h4V20" />
+    </>
+  ),
+  plus: (
+    <>
+      <circle cx="12" cy="12" r="8.4" />
+      <path d="M12 8.2v7.6M8.2 12h7.6" />
+    </>
+  ),
 };
 
 export function WhatsappGlyph({ className }: { className?: string }) {
@@ -43,10 +129,10 @@ export function Icon({
   name,
   className,
 }: {
-  name: IconName;
+  name: DoodleName;
   className?: string;
 }) {
-  const size = className ?? "h-5 w-5";
+  const size = className ?? "h-8 w-8";
 
   if (name === "whatsapp") {
     return <WhatsappGlyph className={`${size} block`} />;
@@ -77,25 +163,12 @@ export function Icon({
         className={`${size} block`}
         aria-hidden
       >
-        <rect x="1" y="1" width="22" height="22" rx="6" />
-        <circle cx="12" cy="12" r="5.2" />
-        <circle cx="17.6" cy="6.4" r="1.15" fill="currentColor" stroke="none" />
+        <rect x="2.2" y="2.2" width="19.6" height="19.6" rx="6" />
+        <circle cx="12" cy="12" r="4.6" />
+        <circle cx="17.3" cy="6.7" r="1" fill="currentColor" stroke="none" />
       </svg>
     );
   }
 
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={size}
-      aria-hidden
-    >
-      <path d={paths[name]} />
-    </svg>
-  );
+  return <DoodleSvg className={size}>{doodles[name]}</DoodleSvg>;
 }

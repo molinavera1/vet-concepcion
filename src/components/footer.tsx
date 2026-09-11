@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto grid max-w-6xl gap-10 px-5 py-12 sm:px-8 md:grid-cols-3">
         <div>
           <p className="flex items-center gap-2.5 font-serif text-2xl">
-            <Logo className="h-9 w-9 shrink-0" />
+            <Logo className="h-10 w-10 shrink-0" onDark />
             {site.name}
           </p>
           <p className="mt-2 text-sm leading-relaxed text-card/70">

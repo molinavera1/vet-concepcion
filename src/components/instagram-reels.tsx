@@ -8,12 +8,12 @@ export function InstagramReels({ reels }: { reels: InstagramReel[] }) {
   return (
     <section
       id="videos"
-      className="scroll-mt-24 border-t border-line bg-background px-5 py-10 sm:px-8"
+      className="scroll-mt-24 px-5 py-14 sm:px-8"
     >
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-wrap items-end justify-between gap-2">
           <div>
-            <h2 className="flex items-center gap-2.5 font-serif text-2xl text-forest sm:text-3xl">
+            <h2 className="flex items-center gap-2.5 font-serif text-3xl text-forest sm:text-4xl">
               <Icon name="instagram" className="h-6 w-6 text-sage" />
               Videos
             </h2>
@@ -36,19 +36,19 @@ export function InstagramReels({ reels }: { reels: InstagramReel[] }) {
           {reels.map((reel) => (
             <li
               key={reel.code}
-              className="w-[7.75rem] shrink-0 snap-start sm:w-36"
+              className="w-[8.5rem] shrink-0 snap-start sm:w-40"
             >
               <a
                 href={reel.permalink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative block overflow-hidden rounded-lg border border-line bg-card"
+                className="group relative block overflow-hidden rounded-2xl border border-line bg-card shadow-sm"
               >
-                <span className="relative block aspect-square">
+                <span className="relative block aspect-[9/16]">
                   <img
                     src={reel.thumbnail}
                     alt={reel.caption}
-                    className="h-full w-full object-cover"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-110"
                   />
                   <span className="pointer-events-none absolute inset-0 bg-forest/15" />
                   <span className="pointer-events-none absolute left-1/2 top-1/2 flex h-8 w-8 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-card/90 text-forest">
