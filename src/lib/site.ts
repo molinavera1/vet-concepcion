@@ -30,7 +30,7 @@ export const extraPets = {
   title: "Tres o más mascotas",
   price: "A conversar",
   description:
-    "En la misma visita se acuerda el valor por WhatsApp.",
+    "El valor se conversa por WhatsApp.",
 } as const;
 
 export const consultPricing = [
@@ -64,8 +64,8 @@ export const addOnPricing = [
   },
   {
     name: "Microchip",
-    addOn: "+$8.000",
-    total: "$36.000",
+    addOn: "+$10.000",
+    total: "$38.000",
   },
   {
     name: "Desparasitación",
@@ -75,8 +75,8 @@ export const addOnPricing = [
   },
   {
     name: "Toma de muestra",
-    addOn: "+$5.000",
-    total: "$33.000",
+    addOn: "desde +$5.000",
+    total: "desde $33.000",
     note: "No incluye el precio de los exámenes de laboratorio.",
   },
 ] as const;
@@ -137,35 +137,85 @@ export const consultaIncludes = [
 export const dogVaccines = [
   {
     name: "Séxtuple",
+    required: false,
     detail:
-      "Cubre enfermedades frecuentes del perro, como moquillo y parvovirus (el laboratorio indica el detalle).",
+      "Protege contra moquillo, parvovirus, hepatitis infecciosa, parainfluenza y leptospirosis. No es obligatoria por ley, pero es la vacuna de base del perro.",
   },
   {
     name: "KC / Intra-Trac",
+    required: false,
     detail:
-      "Tos de las perreras. Se recomienda si hay contacto con otros perros, pensión o peluquería.",
+      "Cubre la tos de las perreras (Bordetella y, según el producto, parainfluenza). Se recomienda si hay contacto con otros perros: pensión, peluquería o paseos grupales.",
   },
   {
     name: "Antirrábica",
-    detail: "Vacuna contra la rabia. Sirve para el calendario anual, viajes y trámites.",
+    required: true,
+    detail:
+      "Protege contra la rabia, una enfermedad mortal que también puede afectar a las personas. En Chile es obligatoria para todo perro y se acredita con certificado veterinario.",
   },
 ] as const;
 
 export const catVaccines = [
   {
     name: "Triple felina",
+    required: false,
     detail:
-      "Protege contra panleucopenia, calicivirus y rinotraqueítis, las enfermedades respiratorias y sistémicas más frecuentes en gatos.",
+      "Protege contra panleucopenia, calicivirus y rinotraqueítis. Son las infecciones virales más frecuentes y graves en gatos. No es obligatoria por ley, pero sí esencial.",
   },
   {
     name: "Antirrábica",
+    required: true,
     detail:
-      "Vacuna contra la rabia. También se indica en gatos que viven en departamento.",
+      "Protege contra la rabia. Es obligatoria por ley también en gatos, aunque vivan en departamento, y se acredita con certificado veterinario.",
   },
   {
     name: "Leucemia felina",
+    required: false,
     detail:
-      "FeLV. Se recomienda si hay acceso al exterior o contacto con otros gatos.",
+      "Protege contra el virus FeLV, que se transmite por contacto cercano entre gatos. Se recomienda si sale al exterior o convive con otros gatos.",
+  },
+] as const;
+
+export const patients = [
+  {
+    src: "/pacientes/01.jpg",
+    alt: "Dachshund descansando en el sillón de su casa",
+    className: "md:col-span-2 md:row-span-2",
+  },
+  {
+    src: "/pacientes/03.jpg",
+    alt: "Gato persa en casa",
+    className: "md:row-span-2",
+  },
+  {
+    src: "/pacientes/08.jpg",
+    alt: "Gato dormido en su cama",
+    className: "",
+  },
+  {
+    src: "/pacientes/02.jpg",
+    alt: "Gato en una visita de vacunación en casa",
+    className: "md:row-span-2",
+  },
+  {
+    src: "/pacientes/04.jpg",
+    alt: "Dos gatos en una visita a domicilio",
+    className: "md:col-span-2",
+  },
+  {
+    src: "/pacientes/05.jpg",
+    alt: "Perro senior en su casa",
+    className: "",
+  },
+  {
+    src: "/pacientes/07.jpg",
+    alt: "Gata en su casa",
+    className: "md:col-span-2",
+  },
+  {
+    src: "/pacientes/06.jpg",
+    alt: "Perro en el living durante la visita",
+    className: "",
   },
 ] as const;
 
@@ -188,21 +238,21 @@ export const coverage = [
 export const steps = [
   {
     n: "1",
-    title: "Escribe por WhatsApp",
+    title: "Escribes por WhatsApp",
     description:
-      "Comuna, especie, edad y motivo. Confirmamos horario, prestaciones y el arancel de esa visita.",
+      "Cuentas comuna, especie y motivo. Coordinamos el día y el horario.",
   },
   {
     n: "2",
     title: "Visita en tu casa",
     description:
-      "Llego con maletín. En una misma visita se puede vacunar, desparasitar y colocar el microchip, si corresponde.",
+      "Llego con los implementos para realizar el procedimiento.",
   },
   {
     n: "3",
-    title: "Indicaciones",
+    title: "Seguimiento",
     description:
-      "Qué se hizo, qué sigue y si el caso debe continuar en un recinto veterinario.",
+      "Hacemos seguimiento activo de cada paciente.",
   },
 ] as const;
 
@@ -213,22 +263,22 @@ export const faqs = [
   },
   {
     q: "¿Qué vacunas aplicas?",
-    a: "En perros: séxtuple, KC o Intra-Trac y antirrábica. En gatos: triple felina, antirrábica y leucemia felina. El esquema depende de edad, historial y estilo de vida.",
+    a: "Por ley, en Chile la única vacuna obligatoria en perros y gatos es la antirrábica. En perros también aplico séxtuple y, si hay contacto con otros perros, KC o Intra-Trac. En gatos, triple felina y leucemia felina según si sale o convive. El esquema se arma según edad e historial.",
   },
   {
     q: "¿Los precios de la web son definitivos?",
-    a: "Son valores de ejemplo y ya incluyen el desplazamiento. Consulta general $28.000; segundo paciente $14.000. Con tres o más mascotas se conversa. Vacunas, muestras, chip y desparasitación se suman. El laboratorio de las muestras va aparte.",
+    a: "Son valores de referencia y pueden variar levemente según la cantidad de mascotas y los servicios que necesites. El detalle se confirma por WhatsApp.",
   },
   {
     q: "¿En qué comunas atiendes?",
-    a: "Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Hualpén y Penco. Si estás un poco más lejos, escríbeme y vemos si el traslado es posible ese día.",
+    a: "Concepción, Talcahuano, San Pedro de la Paz, Chiguayante, Hualpén y Penco. A Chiguayante, Penco y Talcahuano hay un recargo por distancia. Si estás un poco más lejos, escríbeme y vemos si el traslado es posible ese día.",
   },
   {
     q: "¿Las muestras se procesan en la visita?",
-    a: "Las tomo en casa y se envían a laboratorio. Los resultados te los comunico cuando llegan.",
+    a: "Las tomo en casa y se envían al laboratorio. El tiempo de procesamiento varía según el examen solicitado: desde un día, o más.",
   },
   {
     q: "¿Atiendes urgencias?",
-    a: "Consultas y situaciones leves a moderadas en domicilio. Si hay riesgo vital, no esperes una visita: ve al servicio de urgencia veterinaria más cercano. No indico un recinto por comuna (por ejemplo Hualpén o Talcahuano): esa información la confirma cada clínica.",
+    a: "No, atiendo consultas y situaciones leves a moderadas en domicilio. Si hay riesgo vital, dirígete al servicio de urgencia veterinaria más cercano.",
   },
 ] as const;

@@ -7,7 +7,7 @@ export function Logo({
 }) {
   return (
     <img
-      src="/logo.png?v=2"
+      src="/logo.png?v=3"
       alt=""
       className={`${className ?? "h-10 w-10"} object-contain ${onDark ? "brightness-0 invert" : ""}`.trim()}
     />

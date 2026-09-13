@@ -13,6 +13,7 @@ import {
   dogVaccines,
   extraPets,
   faqs,
+  patients,
   services,
   site,
   steps,
@@ -329,7 +330,7 @@ export default async function Home() {
       <section id="vacunas" className="scroll-mt-24 px-5 py-16 sm:px-8">
         <div className="mx-auto max-w-6xl">
           <h2 className="font-serif text-4xl text-forest sm:text-5xl">
-            Vacunas
+            Qué cubre cada vacuna
           </h2>
           <div className="mt-10 grid items-start gap-6 lg:grid-cols-2">
             <Reveal variant="left">
@@ -349,7 +350,14 @@ export default async function Home() {
                 <ul className="mt-4 divide-y divide-line">
                   {dogVaccines.map((v) => (
                     <li key={v.name} className="py-4 first:pt-0">
-                      <p className="font-medium text-forest">{v.name}</p>
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <p className="font-medium text-forest">{v.name}</p>
+                        {v.required ? (
+                          <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-clay">
+                            Obligatoria por ley
+                          </p>
+                        ) : null}
+                      </div>
                       <p className="mt-1 text-sm text-muted">{v.detail}</p>
                     </li>
                   ))}
@@ -374,7 +382,14 @@ export default async function Home() {
                 <ul className="mt-4 divide-y divide-line">
                   {catVaccines.map((v) => (
                     <li key={v.name} className="py-4 first:pt-0">
-                      <p className="font-medium text-forest">{v.name}</p>
+                      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                        <p className="font-medium text-forest">{v.name}</p>
+                        {v.required ? (
+                          <p className="text-[11px] font-medium uppercase tracking-[0.12em] text-clay">
+                            Obligatoria por ley
+                          </p>
+                        ) : null}
+                      </div>
                       <p className="mt-1 text-sm text-muted">{v.detail}</p>
                     </li>
                   ))}
@@ -386,53 +401,57 @@ export default async function Home() {
         </div>
       </section>
 
-      <section id="matilde" className="scroll-mt-24 px-5 py-20 sm:px-8">
-        <div className="mx-auto grid max-w-6xl items-center gap-10 lg:grid-cols-2">
-          <div className="grid grid-cols-2 gap-3">
-            <Reveal variant="left">
-            <div className="overflow-hidden rounded-3xl shadow-lg">
-              <Image
-                src="/pets-dog-smile.jpg"
-                alt="Perro en un entorno familiar"
-                width={600}
-                height={800}
-                className="aspect-[3/4] w-full object-cover transition duration-700 hover:scale-105"
-              />
-            </div>
-            </Reveal>
-            <Reveal variant="left" delay={120}>
-            <div className="mt-10 overflow-hidden rounded-3xl shadow-lg">
-              <Image
-                src="/pets-puppy.jpg"
-                alt="Perro feliz"
-                width={600}
-                height={800}
-                className="aspect-[3/4] w-full object-cover transition duration-700 hover:scale-105"
-              />
-            </div>
-            </Reveal>
+      <section id="pacientes" className="scroll-mt-24 px-5 py-20 sm:px-8">
+        <div className="mx-auto max-w-6xl">
+          <p className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-clay">
+            <Paw className="h-4 w-4" />
+            En su entorno
+          </p>
+          <h2 className="mt-2 font-serif text-4xl text-forest sm:text-5xl">
+            Algunos de mis pacientes
+          </h2>
+          <p className="mt-3 max-w-xl text-muted">
+            La consulta es en casa, donde ellos se sienten seguros.
+          </p>
+          <div className="mt-10 grid auto-rows-[11rem] grid-cols-2 gap-3 md:auto-rows-[13.5rem] md:grid-cols-4">
+            {patients.map((photo, i) => (
+              <Reveal
+                key={photo.src}
+                delay={Math.min(i * 50, 250)}
+                className={`h-full min-h-0 ${photo.className}`}
+              >
+                <div className="group relative h-full min-h-[11rem] overflow-hidden rounded-3xl bg-line shadow-[0_18px_40px_-28px_rgba(19,72,71,0.45)]">
+                  <Image
+                    src={photo.src}
+                    alt={photo.alt}
+                    fill
+                    sizes="(min-width: 768px) 25vw, 50vw"
+                    className="object-cover transition duration-700 group-hover:scale-105"
+                  />
+                </div>
+              </Reveal>
+            ))}
           </div>
-          <Reveal variant="right">
-          <div>
-            <p className="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-clay">
-              <Paw className="h-4 w-4" />
-              En su entorno
-            </p>
-            <h2 className="mt-2 font-serif text-4xl text-forest sm:text-5xl">
+        </div>
+      </section>
+
+      <section id="matilde" className="scroll-mt-24 px-5 pb-20 sm:px-8">
+        <Reveal>
+          <div className="mx-auto max-w-3xl">
+            <h2 className="font-serif text-4xl text-forest sm:text-5xl">
               Por qué a domicilio
             </h2>
             <p className="mt-6 font-serif text-2xl leading-snug text-forest">
-              Menos traslado, menos espera, un animal más calmado.
+              Sin traslado, sin espera, un animal menos estresado.
             </p>
             <p className="mt-4 leading-relaxed text-muted">
-              Encaja si trabajas, si tienes más de una mascota o si te cuesta
-              coordinar una hora en clínica. Cirugía, internación o imágenes no
-              se hacen en domicilio. Si es una urgencia grave, ve al servicio de
-              urgencia más cercano.
+              Es una excelente opción si trabajas, tienes más de una mascota,
+              te cuesta coordinar una hora o tu mascota se estresa en la
+              clínica. Si es una urgencia, acude al servicio de urgencia más
+              cercano.
             </p>
           </div>
-          </Reveal>
-        </div>
+        </Reveal>
       </section>
 
       <section className="bg-forest px-5 py-16 text-card sm:px-8">
@@ -440,7 +459,7 @@ export default async function Home() {
           <p className="text-xs font-medium uppercase tracking-[0.16em] text-card/55">
             Tres pasos
           </p>
-          <h2 className="mt-2 font-serif text-4xl sm:text-5xl">Cómo se agenda</h2>
+          <h2 className="mt-2 font-serif text-4xl sm:text-5xl">Cómo funciona</h2>
           <ol className="mt-10 grid gap-8 md:grid-cols-3">
             {steps.map((step, i) => (
               <Reveal key={step.n} delay={i * 120}>
@@ -468,7 +487,9 @@ export default async function Home() {
             Cobertura
           </h2>
           <p className="mt-3 max-w-xl text-sm text-muted">
-            El desplazamiento está incluido en los aranceles.
+            En Concepción, San Pedro de la Paz y Hualpén el traslado va
+            incluido. A Chiguayante, Penco y Talcahuano hay un recargo por
+            distancia.
           </p>
           <div className="mt-8">
             <Marquee items={coverage} />
@@ -483,7 +504,8 @@ export default async function Home() {
               allowFullScreen
             />
             <p className="border-t border-line px-4 py-2.5 text-xs text-muted">
-              Gran Concepción. El desplazamiento está incluido.{" "}
+              Gran Concepción. A Chiguayante, Penco y Talcahuano hay recargo por
+              distancia.{" "}
               <a
                 href={coverageMap.openUrl}
                 target="_blank"
@@ -552,21 +574,25 @@ export default async function Home() {
               @{site.instagram}
             </a>
           </div>
-          <div className="grid grid-cols-2">
-            <Image
-              src="/pets-dogs.jpg"
-              alt="Perros al aire libre"
-              width={700}
-              height={700}
-              className="h-full min-h-[220px] w-full object-cover transition duration-700 hover:scale-105"
-            />
-            <Image
-              src="/pets-cat.jpg"
-              alt="Gato en casa"
-              width={700}
-              height={700}
-              className="h-full min-h-[220px] w-full object-cover transition duration-700 hover:scale-105"
-            />
+          <div className="grid grid-cols-2 items-center gap-2 self-center p-6 sm:p-8 lg:pr-10">
+            <div className="relative aspect-square overflow-hidden rounded-2xl">
+              <Image
+                src="/pacientes/cta-galgo.jpg"
+                alt="Galgo en el pasto"
+                fill
+                sizes="(min-width: 1024px) 18vw, 40vw"
+                className="object-cover object-center scale-[1.35] transition duration-700 hover:scale-[1.45]"
+              />
+            </div>
+            <div className="relative aspect-square overflow-hidden rounded-2xl">
+              <Image
+                src="/pacientes/cta-gato.jpg"
+                alt="Gata en casa"
+                fill
+                sizes="(min-width: 1024px) 18vw, 40vw"
+                className="object-cover object-center scale-[1.4] transition duration-700 hover:scale-[1.5]"
+              />
+            </div>
           </div>
         </div>
         </Reveal>
