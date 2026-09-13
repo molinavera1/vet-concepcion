@@ -263,7 +263,7 @@ export const faqs = [
   },
   {
     q: "¿Qué vacunas aplicas?",
-    a: "Por ley, en Chile la única vacuna obligatoria en perros y gatos es la antirrábica. En perros también aplico séxtuple y, si hay contacto con otros perros, KC o Intra-Trac. En gatos, triple felina y leucemia felina según si sale o convive. El esquema se arma según edad e historial.",
+    a: "En perros aplico séxtuple, KC o Intra-Trac y antirrábica. En gatos, triple felina, leucemia felina y antirrábica. El esquema de vacunación depende de si es adulto o cachorro.",
   },
   {
     q: "¿Los precios de la web son definitivos?",
