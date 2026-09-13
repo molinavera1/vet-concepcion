@@ -119,7 +119,7 @@ export const services = [
     price: "",
     icon: "chip",
     description:
-      "Identificación permanente bajo la piel. Permite reconocer a la mascota si se pierde y es un requisito en varios trámites.",
+      "Es un identificador permanente, exigido por la Ley Cholito para inscribirla en el Registro Nacional de Mascotas. Si se pierde, es la forma de reconocerla.",
   },
 ] as const;
 
